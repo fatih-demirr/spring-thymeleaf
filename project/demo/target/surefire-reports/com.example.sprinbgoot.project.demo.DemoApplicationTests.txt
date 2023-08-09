@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.sprinbgoot.project.demo.DemoApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.134 s - in com.example.sprinbgoot.project.demo.DemoApplicationTests
