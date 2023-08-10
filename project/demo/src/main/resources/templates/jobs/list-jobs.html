@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- Inline CSS Styles -->
+  <style>
+    /* Your CSS code here */
+    .link-no-underline {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+
+  <title>Job Directory</title>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h3>Job Directory</h3>
+  <hr>
+
+  <!-- Add a button
+  <a th:href="@{/jobs/showFormForAdd}"
+     class="btn btn-primary btn-sm mb-3">
+    Add Job
+  </a>
+  -->
+  <br>
+  <a th:href="@{/}"
+     class="btn btn-primary btn-sm mb-3">
+    Return Home Page
+  </a>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Salary</th>
+      <th>Time</th>
+      <th>Buttons</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tempJob : ${jobs}">
+
+      <td> <a th:href="@{/jobs/list}" th:text="${tempJob.jobName}" class="link-no-underline text-color">Link Text</a> </td>
+      <td> <a th:href="@{/companies/list}" th:text="${tempJob.company.companyName}" class="link-no-underline text-color">Link Text</a> </td>
+      <td th:text="${tempJob.salaryInfo}" />
+      <td th:text="${tempJob.timeInfo}" />
+
+
+      <td>
+        <div class="row">
+
+          <div class="col-small">
+            <!-- Add "update" button/link
+            <form action="#" th:action="@{/companies/showFormForUpdate}" method="POST">
+
+              <input type="hidden" name="companyId" th:value="${tempJob.id}" />
+              <button type="submit" class="btn btn-info btn-sm me-1" style="float:left;">Update</button>
+
+            </form>
+            -->
+            <!-- Add "delete" button/link -->
+            <form action="#" th:action="@{/jobs/delete}" method="DELETE">
+
+              <input type="hidden" name="companyId" th:value="${tempJob.id}" />
+              <button type="submit" class="btn btn-danger btn-sm"
+                      onclick="if (!(confirm('Are you sure you want to delete this job?'))) return false">
+                Delete
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>

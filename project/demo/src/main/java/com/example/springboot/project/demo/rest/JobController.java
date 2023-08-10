@@ -1,23 +1,20 @@
 package com.example.springboot.project.demo.rest;
 
-import com.example.springboot.project.demo.enums.EmploymentType;
-import com.example.springboot.project.demo.enums.ExpertiseLevel;
 import com.example.springboot.project.demo.entity.Company;
-import com.example.springboot.project.demo.entity.Employee;
 import com.example.springboot.project.demo.entity.Job;
-import com.example.springboot.project.demo.service.JobService;
 import com.example.springboot.project.demo.service.JobServiceImpl;
-import jakarta.persistence.ElementCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "Access-Control-Allow-Origin")
-@RestController
-@RequestMapping("/api")
+@Controller
+@RequestMapping("/jobs")
 public class JobController {
     private final JobServiceImpl jobService;
     @Autowired
@@ -25,20 +22,21 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/jobs")
-    public ResponseEntity<List<Job>> getAllJobs(){
+    @GetMapping("/list")
+    public String getAllJobs(Model theModel){
         List<Job> jobList = jobService.getAllJobs();
-        return ResponseEntity.ok(jobList);
+        theModel.addAttribute("jobs", jobList);
+        return "jobs/list-jobs";
     }
 
-    @GetMapping("/jobs/{jobId}")
+    @GetMapping("/{jobId}")
     public ResponseEntity<Job> getJob(@PathVariable("jobId") Integer jobId){
         //check the errors: job does not exist etc.
         Job job = jobService.findJobById(jobId).get();
         return ResponseEntity.ok(job);
     }
 
-    @DeleteMapping("/jobs/{jobId}")
+    @DeleteMapping("/{jobId}")
     public ResponseEntity<Void> deleteCompany(@PathVariable Integer jobId) {
         if (jobService.deleteJob(jobId)) {
             return ResponseEntity.noContent().build();

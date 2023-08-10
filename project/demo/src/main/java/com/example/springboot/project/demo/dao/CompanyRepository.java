@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
     public List<Company> findAllByOrderByCompanyNameAsc();
+    Company findByCompanyName(String companyName);
 }
