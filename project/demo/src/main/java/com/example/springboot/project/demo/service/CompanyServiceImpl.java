@@ -2,8 +2,12 @@ package com.example.springboot.project.demo.service;
 
 import com.example.springboot.project.demo.dao.CompanyRepository;
 import com.example.springboot.project.demo.entity.Company;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -43,5 +47,30 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public void deleteById(int theId) {
         companyRepository.deleteById(theId);
+    }
+
+    @Transactional
+    @Override
+    public Company updateCompany(Integer companyId, Company updatedCompany) {
+        Optional<Company> optionalCompany = companyRepository.findById(companyId);
+        Company existingCompany = optionalCompany.orElseThrow(()->new EntityNotFoundException("Company not found"));
+
+        BeanUtils.copyProperties(updatedCompany, existingCompany, "id");
+
+        return companyRepository.save(existingCompany);
+    }
+
+    @Override
+    public Company createCompany(Company newCompany) {
+        // Perform any additional validation or business logic if needed before saving
+
+        // Check if a company with the same name already exists
+        Company existingCompany = companyRepository.findByCompanyName(newCompany.getCompanyName());
+        if (existingCompany != null) {
+            // Handle the case where the company already exists (e.g., return null or throw an exception)
+            // For example, you can throw a custom exception like CompanyAlreadyExistsException
+            throw new EntityExistsException("Company with name " + newCompany.getCompanyName() + " already exists");
+        }
+        return companyRepository.save(newCompany);
     }
 }

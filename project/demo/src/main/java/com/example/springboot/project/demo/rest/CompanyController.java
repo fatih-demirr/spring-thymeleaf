@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/companies")
@@ -17,11 +18,18 @@ public class CompanyController {
         this.companyService = theCompanyService;
     }
 
-    @GetMapping("/list")
+    @GetMapping()
     public String listCompanies(Model theModel){
         List<Company> theCompanies = companyService.findAll();
         theModel.addAttribute("companies", theCompanies);
         return "companies/list-companies";
+    }
+    @GetMapping("/{companyId}")
+    public String getCompany(@PathVariable("companyId") Integer companyId, Model theModel){
+        //check the errors: company does not exist etc.
+        Company company = companyService.findById(companyId);
+        theModel.addAttribute("company", company);
+        return "companies/company-detail";
     }
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model theModel){
