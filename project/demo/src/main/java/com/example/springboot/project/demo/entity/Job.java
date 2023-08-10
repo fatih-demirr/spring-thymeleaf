@@ -34,7 +34,7 @@ public class Job {
     private Integer salaryMax;
     @Column(name = "salary_min")
     private Integer salaryMin;
-    @Column(name = "date_post")
+    @Column(name = "date_of_post")
     private LocalDate dateOfPost;
     @Column(name = "is_remote")
     private Boolean isRemote;

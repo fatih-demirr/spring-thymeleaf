@@ -43,7 +43,7 @@ public class CompanyController {
         return "redirect:/companies/list";
     }
 
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public String delete(@RequestParam("companyId") int theId){
         companyService.deleteById(theId);
         return "redirect:/companies/list";
