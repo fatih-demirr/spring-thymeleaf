@@ -1,4 +1,4 @@
-package com.example.registrationlogindemo.dto;
+package com.example.sprinbgoot.project.demo.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;

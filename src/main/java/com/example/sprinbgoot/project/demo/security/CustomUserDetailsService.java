@@ -1,8 +1,8 @@
-package com.example.registrationlogindemo.security;
+package com.example.sprinbgoot.project.demo.security;
 
-import com.example.registrationlogindemo.entity.Role;
-import com.example.registrationlogindemo.entity.User;
-import com.example.registrationlogindemo.repository.UserRepository;
+import com.example.sprinbgoot.project.demo.entity.Role;
+import com.example.sprinbgoot.project.demo.entity.User;
+import com.example.sprinbgoot.project.demo.dao.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

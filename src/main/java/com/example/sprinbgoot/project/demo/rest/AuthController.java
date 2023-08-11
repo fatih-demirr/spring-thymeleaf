@@ -1,8 +1,8 @@
-package com.example.registrationlogindemo.controller;
+package com.example.sprinbgoot.project.demo.rest;
 
-import com.example.registrationlogindemo.dto.UserDto;
-import com.example.registrationlogindemo.entity.User;
-import com.example.registrationlogindemo.service.UserService;
+import com.example.sprinbgoot.project.demo.dto.UserDto;
+import com.example.sprinbgoot.project.demo.entity.User;
+import com.example.sprinbgoot.project.demo.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import com.example.sprinbgoot.project.demo.entity.Role;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class AuthController {
     }
 
     // handler method to handle user registration request
-    @GetMapping("register")
+    @GetMapping("/register")
     public String showRegistrationForm(Model model){
         UserDto user = new UserDto();
         model.addAttribute("user", user);

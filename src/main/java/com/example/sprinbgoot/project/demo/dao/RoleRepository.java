@@ -1,8 +1,10 @@
-package com.example.registrationlogindemo.repository;
+package com.example.sprinbgoot.project.demo.dao;
 
-import com.example.registrationlogindemo.entity.Role;
+import com.example.sprinbgoot.project.demo.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
     Role findByName(String name);
 }

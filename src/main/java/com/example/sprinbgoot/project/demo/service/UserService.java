@@ -1,7 +1,8 @@
-package com.example.registrationlogindemo.service;
+package com.example.sprinbgoot.project.demo.service;
 
-import com.example.registrationlogindemo.dto.UserDto;
-import com.example.registrationlogindemo.entity.User;
+import com.example.sprinbgoot.project.demo.dto.UserDto;
+import com.example.sprinbgoot.project.demo.entity.User;
+import com.example.sprinbgoot.project.demo.dto.UserDto;
 
 import java.util.List;
 

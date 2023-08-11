@@ -1,11 +1,10 @@
-package com.example.registrationlogindemo.service.impl;
+package com.example.sprinbgoot.project.demo.service;
 
-import com.example.registrationlogindemo.dto.UserDto;
-import com.example.registrationlogindemo.entity.Role;
-import com.example.registrationlogindemo.entity.User;
-import com.example.registrationlogindemo.repository.RoleRepository;
-import com.example.registrationlogindemo.repository.UserRepository;
-import com.example.registrationlogindemo.service.UserService;
+import com.example.sprinbgoot.project.demo.dto.UserDto;
+import com.example.sprinbgoot.project.demo.entity.User;
+import com.example.sprinbgoot.project.demo.entity.Role;
+import com.example.sprinbgoot.project.demo.dao.RoleRepository;
+import com.example.sprinbgoot.project.demo.dao.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

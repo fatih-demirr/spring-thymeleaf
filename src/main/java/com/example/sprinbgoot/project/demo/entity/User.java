@@ -1,4 +1,4 @@
-package com.example.registrationlogindemo.entity;
+package com.example.sprinbgoot.project.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class User
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable=false)
     private String name;

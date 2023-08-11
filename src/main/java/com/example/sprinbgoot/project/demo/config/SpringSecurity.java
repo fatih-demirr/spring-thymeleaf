@@ -1,4 +1,4 @@
-package com.example.registrationlogindemo.config;
+package com.example.sprinbgoot.project.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,9 +28,11 @@ public class SpringSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/register/**").permitAll()
+                        authorize.requestMatchers("/").permitAll()
+                                .requestMatchers("/companies/**").permitAll()
                                 .requestMatchers("/index").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
+                                .requestMatchers("/register/**").permitAll()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
